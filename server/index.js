@@ -110,6 +110,17 @@ app.get('/userInfo', function(req, res){
 	});
 });
 
+app.get('/userI/:username', function(req, res){
+		Users.getUserInfo(req.params.username, function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+
+			res.send(user);
+		}
+	});
+});
+
 //it updates the user information
 app.put('/updateUser', function (req, res) {
 	var query = req.session.userName;
