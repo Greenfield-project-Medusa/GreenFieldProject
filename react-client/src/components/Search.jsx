@@ -7,11 +7,13 @@ class Search extends React.Component {
 
     this.state = {
       value: '',
-      val: ''
+      val: '',
+      loc:''
     };
 
     this.handleCategoryChange  = this.handleCategoryChange.bind(this);
     this.handleInputChange  = this.handleInputChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
   }
 
   handleInputChange(e) {
@@ -25,6 +27,12 @@ class Search extends React.Component {
     this.props.searchJobCategory(e.target.value)
     this.setState({
       val: e.target.value
+    });
+  }
+  handleLocationChange(e){
+    this.props.searchJobLocation(e.target.value)
+    this.setState({
+      loc: e.target.value
     });
   }
 
@@ -41,6 +49,17 @@ class Search extends React.Component {
           <option value="Babysitting">Babysitting</option>
           <option value="Tutoring">Tutoring</option>
         </select>
+        </div>
+
+        <div className="form-group">
+          <select className="form-control selectpicker btn btn-default" id="catJ" onChange={this.handleLocationChange} value={this.state.loc}>
+              <option value="All">All Locations</option>
+              <option value="Amman">Amman</option>
+              <option value="Irbid">Irbid</option>
+              <option value="Zarqa">Zarqa</option>
+              <option value="Jerash">Jerash</option>
+              <option value="Aqaba">Aqaba</option>
+          </select>
         </div>
 
       <FormControl

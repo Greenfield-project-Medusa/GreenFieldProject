@@ -34,6 +34,18 @@ class Home extends React.Component {
             console.log(error);
         });
   }
+  searchJobLocation(location){
+    var that = this;
+    console.log(location)
+   axios.post('/jobLocation', {"location": location})
+        .then(function(response){
+          const posts = response.data;
+            that.setState({items: posts});
+        })
+          .catch(function (error) {
+            console.log(error);
+        });
+  }
 
   searchJobTitle(query) {
     var that = this;
@@ -73,7 +85,7 @@ render() {
     <div id='home'>
     <br />
     <div>
-    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
+    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
     </div>
     <div>
     {arr}

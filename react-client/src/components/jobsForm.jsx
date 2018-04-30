@@ -11,6 +11,7 @@ class JobsForm extends React.Component {
 			jobTitle: '',
 			jobDescription: '',
 			category: '',
+			location:'',
 			from: '',
 			to: ''},
 			message:''
@@ -41,9 +42,7 @@ class JobsForm extends React.Component {
   			.catch(function (error) {
     		console.log(error);
   			});
-
-  			
-		};
+	};
 
 	render() {
 		return (
@@ -79,8 +78,27 @@ class JobsForm extends React.Component {
 			</Col>
 			<Col md={1}>
 			</Col>
-			</Row> <br />
-
+			</Row>
+			
+			<Row>
+				<Col md={3}>
+					<span>Location</span>
+				</Col>
+				<Col md={3}>
+					<label >
+						<div className="form-group">
+					        <select name = "location" className="form-control selectpicker btn btn-default" id="catJ" onChange={this.onChange}>
+					            <option value="Select">Select Location</option>
+					            <option value="Amman">Amman</option>
+					            <option value="Irbid">Irbid</option>
+					            <option value="Zarqa">Zarqa</option>
+					            <option value="Jerash">Jerash</option>
+					            <option value="Aqaba">Aqaba</option>
+					        </select>
+			        	</div>
+					</label>
+				</Col>
+			</Row>
 			<Row>
 			<Col md={1}>
 			</Col> 
