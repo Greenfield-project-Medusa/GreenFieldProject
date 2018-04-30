@@ -50,7 +50,6 @@ axios.get('/logged')
 			</Switch>
 		</div>
 	</Router>
-
 	)
 }
 }
