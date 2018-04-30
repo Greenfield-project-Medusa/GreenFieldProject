@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
+import {browserHistory, Route, Switch, Link, NavLink, BrowserRouter as Router} from 'react-router-dom';
 import SignUpForm from '../components/signup.jsx';
 import JobsForm from '../components/jobsForm.jsx';
 import NavBar from '../components/Header.jsx';
@@ -9,6 +9,7 @@ import Profile from '../components/profile.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
 import axios from 'axios';
+import UsersProfile from '../components/UsersProfile.jsx';
 class AppRouter extends React.Component {
 constructor(props) {
     super(props);
@@ -34,23 +35,21 @@ axios.get('/logged')
    render() {
 
     return (
-	<BrowserRouter>
+	<Router history={browserHistory}>
 		<div>
 			<NavBar session={this.state.session}/><br /><br />
 			<Switch>
 			<Route  exact path = "/"  component = {Home}/>	
 			<Route  path = "/signup" component = {SignUpForm} />
-			<Route  path = "/UserJobs/:jobTitle/:userName" component = {UserJobs} />				
+			<Route  path = "/UserJobs/:jobTitle/:userName" component = {UserJobs} />
+			<Route path = '/user/:username'	component = {UsersProfile} />			
 			<Route  path = "/jobsForm" component = {JobsForm} />
 			<Route  path = "/profile" component = {Profile} />			
 			<Route  path = "/login"	component = {Login} />	
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
-
-
-
 			</Switch>
 		</div>
-	</BrowserRouter>
+	</Router>
 
 	)
 }
