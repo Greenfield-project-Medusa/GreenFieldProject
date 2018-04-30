@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-import SignUpForm from '../components/SignUp.jsx';
-import JobsForm from '../components/JobsForm.jsx';
+import SignUpForm from '../components/signup.jsx';
+import JobsForm from '../components/jobsForm.jsx';
 import NavBar from '../components/Header.jsx';
-import Login from '../components/Login.jsx';
+import Login from '../components/login.jsx';
 import Home from '../components/Home.jsx';
 import Profile from '../components/profile.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';

@@ -191,6 +191,16 @@ app.post('/jobCategory', function (req, res) {
 	});
 });
 
+app.post('/jobLocation', function (req, res) {
+	Jobs.jobsByLocation({"location":req.body.location}, function(err, job){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(job);
+		}
+	});
+});
+
 //?
 app.delete('/:jobTitle', function(req, res){
 	Jobs.deleteJob(req.body.jobTitle, function(err, job){

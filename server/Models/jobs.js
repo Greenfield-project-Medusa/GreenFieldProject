@@ -19,6 +19,7 @@ var jobsSchema = mongoose.Schema({
   from: String,
   to: String,
   dateTo:Date,
+  location: String,
   dateFrom:Date,
   created_at: 
   {
@@ -120,6 +121,8 @@ var jobByUserName = function(userName, callback){
 };
 
 var jobsByCategory = function(category, callback){
+    console.log("Helooo22222",category)
+
   if(category.category!=="All"){
    Jobs.aggregate([
     {$match:{"category":category.category}},
@@ -197,6 +200,51 @@ var deleteJob = function(jobTitle, callback){
 };
 
 
+var jobsByLocation = function(location, callback){
+  console.log("Helooo1111",location)
+  if(location.location!=="All"){
+   Jobs.aggregate([
+    {$match:{"location":location.location}},
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+  }
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+        console.log(data);
+        callback(null, data)
+    });
+ } else {
+   Jobs.aggregate([
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+  }
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+        console.log(data);
+        callback(null, data)
+    });
+ }  
+};
+
+
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
 module.exports.createJob = createJob;
@@ -211,3 +259,4 @@ module.exports.deleteJob = deleteJob;
 module.exports.findSome = findSome;
 module.exports.getUserJob = getUserJob;
 module.exports.updateUserJob = updateUserJob;
+module.exports.jobsByLocation = jobsByLocation;

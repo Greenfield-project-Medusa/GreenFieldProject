@@ -13,6 +13,7 @@ render() {
 	if(this.props.item.userInfo.length>0){
 		 phonNum=this.props.item.userInfo[0].phoneNumber;
 	}
+	console.log(this.props.item)
 	
   return (
   	<div>
@@ -50,12 +51,16 @@ render() {
 		<Row>
 		<Col md={1}>
 		</Col>
-			<Col id="description" md={10}>
+		<Col id="description" md={4}>
 			<span><b>Description : </b></span>
 			<span>{this.props.item.jobDescription}</span>
 			</Col>
-			<Col md={1}>
-			</Col>
+		<Col md={3}>
+		</Col>
+		<Col md={4}>
+			<span><b>Location : </b></span>
+			<span>{this.props.item.location}</span>
+		</Col>
 		</Row><br />
 
 		 <Row>

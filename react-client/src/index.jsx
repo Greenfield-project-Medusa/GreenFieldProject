@@ -12,10 +12,6 @@ class App extends React.Component {
     
    
   }
-
-
-
-
 }
 
 ReactDOM.render(<AppRouter  />, document.getElementById('app'));
