@@ -8,6 +8,7 @@ import Home from '../components/Home.jsx';
 import Profile from '../components/profile.jsx';
 import NotAuthenticatedHome from '../components/NotAuthenticatedHome.jsx';
 import UserJobs from '../components/UserJobs.jsx';
+import Rate from '../components/Rate.jsx';
 import axios from 'axios';
 class AppRouter extends React.Component {
 constructor(props) {
@@ -45,7 +46,7 @@ axios.get('/logged')
 			<Route  path = "/profile" component = {Profile} />			
 			<Route  path = "/login"	component = {Login} />	
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
-
+			<Route  path = "/Rate" component = {Rate}/>
 
 
 			</Switch>

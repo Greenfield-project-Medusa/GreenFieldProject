@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import HomeDisplay from './HomeDisplay.jsx';
 import Search from './Search.jsx'
-
+import Rate from './Rate.jsx'
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +66,8 @@ class Home extends React.Component {
 render() {
   var arr = [];
     this.state.items.forEach(function(item) {
-      arr.push(<HomeDisplay item={item} />)
+      arr.push(<HomeDisplay item={item} /> )
+      arr.push(<Rate />)
     })
   return (
   
