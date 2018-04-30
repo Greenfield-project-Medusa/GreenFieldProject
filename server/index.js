@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var expressValidtor = require('express-validator');
 var mongoStore = require('connect-mongo')(session);
-
+var path = require('path');
 
 //it generates a unique id for the session
 var generateSecret = function (){
@@ -101,6 +101,17 @@ app.put('/updateUserJob', function(req, res){
 
 app.get('/userInfo', function(req, res){
 		Users.getUserInfo(req.session.userName, function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+
+			res.send(user);
+		}
+	});
+});
+
+app.get('/userI/:username', function(req, res){
+		Users.getUserInfo(req.params.username, function(err, user){
 		if(err){
 			console.log(err);
 		} else {
@@ -211,6 +222,9 @@ app.delete('/:jobTitle', function(req, res){
 		}
 	});
 });
+app.get('*', function (req, res){
+    res.sendFile(path.resolve(__dirname, '../react-client/dist', 'index.html'));
+})
 
 app.set('port', (process.env.PORT || 3000));
 
