@@ -7,8 +7,6 @@ class NavBar extends React.Component {
     this.state = { 
       session: false
     }
-
-  
   }
 
     render(){
@@ -22,7 +20,7 @@ class NavBar extends React.Component {
 		<li id='Na'><NavLink to = "/profile" activeClassName = "is-active" >Profile</NavLink></li>
 		<li id='NA'><NavLink to = "/user/ahmad" activeClassName = "is-active" >test</NavLink> </li>
 		<li className="nav navbar-nav pull-right" id='Na'><NavLink to = "/logout" activeClassName = "is-active" >Logout</NavLink></li>
-		
+		<li id="Na"><NavLink to = '/user/ahmad'> test </NavLink></li>
 		</ul>
 	 </div>
 </nav>
