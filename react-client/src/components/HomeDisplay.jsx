@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import { Button, FormControl, ButtonToolbar,Panel,ListGroup,ListGroupItem } from 'react-bootstrap';
 class HomeDisplay extends React.Component {
   constructor(props) {
   	console.log(props.item.to)
@@ -17,61 +17,36 @@ render() {
 	
   return (
   	<div>
-  	<div id ='postDiv' className="jobsDiv container"><br />
-  		<Row>
-			<Col md={4}>
-			<span><b>Name : </b></span>
-			<span>{this.props.item.user}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>Job Title : </b></span>
-			<span>{this.props.item.jobTitle}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>Job Category : </b></span>
-			<span>{this.props.item.category}</span>
-			</Col>
-		</Row><br />
-		
-        <Row>
-            <Col md={4}>
-            <span><b>From : </b></span>
-			<span>{this.props.item.from}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>To : </b></span>
-			<span>{this.props.item.to}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>Phone Number : </b></span>
-			<span>{phonNum}</span>
-			</Col>	
-		</Row><br />
+<div>
+  	<Panel bsStyle='primary'>
+    	<Panel.Heading>
+      		<Panel.Title id='pa' toggle>{this.props.item.jobTitle} </Panel.Title>
+    	</Panel.Heading>
+    	<Panel.Body collapsible>
+    	<div className='row'>
+    		<div className='col-md-3' >
+    			<ListGroup>
+ 				 <ListGroupItem>{this.props.item.user}</ListGroupItem><br />
+		    	 <ListGroupItem>rate goes here</ListGroupItem>
+ 				 <ListGroupItem><img src='http://www.elyomnew.com/sites/default/files/default_images/profile-default-male.png' /></ListGroupItem>
+		   		</ListGroup>
+    		</div>
+    		<div className='col-md-9'>
+    			<ListGroup>
+ 				 <ListGroupItem>{this.props.item.jobDescription}</ListGroupItem><br />
+		    	 <ListGroupItem>{phonNum}</ListGroupItem>
+ 				 <ListGroupItem>I am avaliabe from {this.props.item.from} to {this.props.item.to}</ListGroupItem>
+		  	 	</ListGroup>
+    		</div>
+    	</div>
+    	
+    	</Panel.Body>
+    	<Panel.Footer>
+  		  {this.props.item.created_at.slice(0, 10)}
+    	</Panel.Footer>
+  </Panel>
+</div>
 
-		<Row>
-		<Col md={1}>
-		</Col>
-		<Col id="description" md={4}>
-			<span><b>Description : </b></span>
-			<span>{this.props.item.jobDescription}</span>
-			</Col>
-		<Col md={3}>
-		</Col>
-		<Col md={4}>
-			<span><b>Location : </b></span>
-			<span>{this.props.item.location}</span>
-		</Col>
-		</Row><br />
-
-		 <Row>
-		 <Col md={8}>
-			</Col>
-		 <Col id='postTime' md={4}>
-			<span><b>Posted at : </b></span>
-			<span>{this.props.item.created_at.slice(0, 10)}</span>
-			</Col>
-		 </Row>
-    </div><br />
     </div>
     )
   }
