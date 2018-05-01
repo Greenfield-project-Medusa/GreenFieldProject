@@ -7,6 +7,7 @@ body {
     font-family: Rajdhani;
     color: DARKBLUE;
     font-size: 1.6rem;
+    background: #f2f7fb;
 }
 
 ul {
@@ -48,7 +49,7 @@ li {
 
 
 #HNA {
-    background: linear-gradient(to right, #000000, #434343);
+    background-color: STEELBLUE;
 }
 
 #Na {
@@ -69,7 +70,7 @@ li a:hover:not(.is-active) {
 }
 
 .is-active {
-    background-color: STEELBLUE;
+    background-color: #104e8b;
  
 }
 
@@ -98,14 +99,10 @@ li a:hover:not(.is-active) {
 
 #catagory {
     border-radius: 10px; 
-    width: 800px;
     height: 70px;
     margin-bottom: 10px;
     margin-top: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px;
     margin-bottom: 25px;
 }
 
@@ -275,4 +272,13 @@ li a:hover:not(.is-active) {
 
 #description {
  text-align: left; 
+}
+
+.outerBorder{
+    padding: 20px;;
+    border: 1px solid #42e8f3;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 3px 0px #11aac4;
+    -moz-box-shadow:    0px 0px 3px 0px #11aac4;
+    box-shadow:         0px 0px 3px 0px #11aac4;
 }

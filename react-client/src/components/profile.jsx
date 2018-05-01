@@ -12,7 +12,6 @@ class Profile extends React.Component {
     }
   }
 
-
 //make new get requests for each filter
   componentDidMount() {
     axios.get('/userJobs')
@@ -43,8 +42,8 @@ getUserInfo(){
 render() {
   var arr = [];
   
-    this.state.jobs.forEach(function(item) {
-      arr.push(<JobsForUser item={item} />)
+    this.state.jobs.forEach(function(item, index) {
+      arr.push(<JobsForUser item={item} key={index}/>)
     })
   
   return (

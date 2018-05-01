@@ -84,12 +84,13 @@ render() {
   return (
   
     <div className='container'>
-    <br />
-    <div>
-    </div>
-    <div>
-    {arr}
-    </div>
+      <br />
+      <div>
+      <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
+      </div>
+      <div>
+        {arr}
+      </div>
     </div>
     
     )
