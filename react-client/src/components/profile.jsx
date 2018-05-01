@@ -3,12 +3,14 @@ import axios from 'axios';
 import JobsForUser from './jobsForUser.jsx';
 import Search from './Search.jsx';
 import UserInfo from './UserInfo.jsx';
+import Pmessage from './profilemessage.jsx';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       jobs: [],
-      user:[]
+      user:[],
+      username:''
     }
   }
 
@@ -24,6 +26,7 @@ class Profile extends React.Component {
     console.log(error);
   });
   this.getUserInfo();
+
 }
 
 getUserInfo(){
@@ -32,7 +35,9 @@ getUserInfo(){
     const posts = response.data;
     console.log(posts);
     this.setState({user:posts});
-    
+    console.log('posts(((((((((((((( ',posts)
+    this.setState({username:posts.userName})
+    console.log('state.posts(((((((((((((( ',this.state.username)
   })
   .catch(function (error) {
     console.log(error);
@@ -40,6 +45,7 @@ getUserInfo(){
 }
 
 render() {
+  console.log('this.state.jobs++++++++++',this.state)
   var arr = [];
   
     this.state.jobs.forEach(function(item, index) {
@@ -56,6 +62,7 @@ render() {
     <div>
     {arr}
     </div><br /><br />
+    <Pmessage username={this.state.username}/>
     </div>
     
     )
