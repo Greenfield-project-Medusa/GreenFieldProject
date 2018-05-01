@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Button, FormControl, ButtonToolbar,Panel,ListGroup,ListGroupItem } from 'react-bootstrap';
+import Rate from './Rate.jsx'
 class HomeDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -56,6 +57,7 @@ render() {
     	<Panel.Footer>
   		  {this.props.item.created_at.slice(0, 10)}
     	</Panel.Footer>
+      <Rate />
   </Panel>
 </div>
 
