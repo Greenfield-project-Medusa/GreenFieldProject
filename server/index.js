@@ -51,6 +51,16 @@ app.post('/messages',function(req,res){
 	console.log('req ----------' ,req.body)
 	Msgs.createmsg(req.body);
 });
+app.get('/messages',function(req,res){
+	Msgs.retriveMsg(function(err,msg){
+		console.log('hello from message')
+		if(err){
+			console.log(err)
+		}else{
+			res.send(msg)
+		}
+	});
+});
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){

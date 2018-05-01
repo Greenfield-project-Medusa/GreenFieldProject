@@ -5,7 +5,8 @@ var messagesSchema=mongoose.Schema({
 		required: [true, 'you shoud insert the reciver']
 	},
 	text:String,
-	read:Boolean
+	read:{type:Boolean,default:false}
+	
 }) 
 
 var Message = mongoose.model('Message', messagesSchema);
@@ -21,20 +22,29 @@ var createmsg = function(data, callback){
 message.save(function(error){
 	if(error){
 	console.log('something err')
-
 	}else{
 	console.log('saved')
-		
+
 	}
 
 
 	
 })
-
  //console.log('here------------------',data);
   Message.create(data, callback)
 };
 
+
+var retriveMsg =function(callback){
+	Message.find({},function(err,data){
+		if(err){
+			callback(err,null)
+		}else{
+			callback(null,data)
+		}
+	})
+
+}
 
 
 
@@ -88,3 +98,4 @@ message.save(function(error){
 
 module.exports.Message=Message;
 module.exports.createmsg=createmsg;
+module.exports.retriveMsg=retriveMsg;

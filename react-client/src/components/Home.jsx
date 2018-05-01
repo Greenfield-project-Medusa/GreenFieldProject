@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import HomeDisplay from './HomeDisplay.jsx';
 import Search from './Search.jsx'
-
+import Masseges from './masseges.jsx'
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -84,13 +84,14 @@ render() {
   return (
   
     <div className='container'>
-      <br />
-      <div>
+    <Masseges />
       <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
-      </div>
-      <div>
-        {arr}
-      </div>
+    <br />
+    <div>
+    </div>
+    <div>
+    {arr}
+    </div>
     </div>
     
     )
