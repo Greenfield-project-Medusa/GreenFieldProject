@@ -1,5 +1,5 @@
 import React from 'react';
-import { PanelGroup, Panel, Button, Well, FormControl, Row, Col, Thumbnail } from 'react-bootstrap';
+import { PanelGroup, Panel, Button, Well, FormControl, Row, Col, Thumbnail, ListGroup, ListGroupItem } from 'react-bootstrap';
 import $ from 'jquery'
 
 class UsersProfile extends React.Component {
@@ -37,31 +37,55 @@ class UsersProfile extends React.Component {
   render() {
     return(
       <div className = 'container'>
-      <br />
-        <div className = 'outerBorder'>
-          <Row>
-            <Col md={3}>
-              <Thumbnail src="http://www.redactorpublishing.com/gallery/avatar.png" height="250px">
-                <h3>{this.state.user.name}</h3>
-                <p>{this.state.user.nationality}</p>
-                <p>
-                  here for rating
-                </p>
-              </Thumbnail>
-            </Col>
-            <Col md={9}>
-              <Thumbnail>
-                <h3>{this.state.user.name}</h3>
-                <p>{this.state.user.nationality}</p>
-                <p>
-                  here for rating
-                </p>
-              </Thumbnail>
-            </Col>
-          </Row>
-        </div>
+        <br />
+        <Row>
+          <Col md={3}>
+            <Thumbnail className = 'outerBorder' src="http://www.redactorpublishing.com/gallery/avatar.png" height="250px">
+              <ListGroupItem header="Full name :">{this.state.user.name}</ListGroupItem>
+              <ListGroupItem header="Nationality :">{this.state.user.nationality}</ListGroupItem>
+              <ListGroupItem header="Rate :">here we put rating</ListGroupItem>
+            </Thumbnail>
+          </Col>
+          <Col md={9}>
+            <Thumbnail className = 'outerBorder'>
+              <ListGroupItem header="Email :">{this.state.user.email}</ListGroupItem>
+              <ListGroupItem header="Gender :">{this.state.user.gender}</ListGroupItem>
+              <ListGroupItem header="Phone :">{this.state.user.phoneNumber}</ListGroupItem>
+              <ListGroupItem header="Address :">{this.state.user.address}</ListGroupItem>
+              <ListGroupItem header="Age :">{this.state.user.age}</ListGroupItem>
+            </Thumbnail>
+          </Col>
+        </Row>
       </div>
     )
   }
 }
 export default UsersProfile;
+
+/*
+return(
+  <div className = 'container'>
+  <br />
+    <div className = 'outerBorder'>
+      <Row>
+        <Col md={3}>
+          <Thumbnail src="http://www.redactorpublishing.com/gallery/avatar.png" height="250px">
+            <ListGroupItem header="Full name :">{this.state.user.name}</ListGroupItem>
+            <ListGroupItem header="Nationality :">{this.state.user.nationality}</ListGroupItem>
+            <ListGroupItem header="Rate :">here we put rating</ListGroupItem>
+          </Thumbnail>
+        </Col>
+        <Col md={9}>
+          <Thumbnail className = 'outerBorder'>
+            <ListGroupItem header="Email :">{this.state.user.email}</ListGroupItem>
+            <ListGroupItem header="Gender :">{this.state.user.gender}</ListGroupItem>
+            <ListGroupItem header="Phone :">{this.state.user.phoneNumber}</ListGroupItem>
+            <ListGroupItem header="Address :">{this.state.user.address}</ListGroupItem>
+            <ListGroupItem header="Age :">{this.state.user.age}</ListGroupItem>
+          </Thumbnail>
+        </Col>
+      </Row>
+    </div>
+  </div>
+)
+*/
