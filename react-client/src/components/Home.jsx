@@ -66,6 +66,7 @@ class Home extends React.Component {
     console.log("hi");
     axios.get('/jobs')
     .then(response => {
+      console.log(response.data)
     const posts = response.data;
     this.setState({items:posts});
     
@@ -82,10 +83,9 @@ render() {
     })
   return (
   
-    <div id='home'>
+    <div className='container'>
     <br />
     <div>
-    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
     </div>
     <div>
     {arr}
@@ -96,3 +96,4 @@ render() {
 }
 }
 export default Home;
+//    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>

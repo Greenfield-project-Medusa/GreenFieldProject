@@ -1,11 +1,12 @@
-html {
-    font-size: 62.5%;
+#pa{
+    font-size: 2rem;
+    font-family: Rajdhani;
+    font-weight: bold;
 }
 body {
     font-family: Rajdhani;
     color: DARKBLUE;
     font-size: 1.6rem;
-    background: linear-gradient(to bottom, #e6dada, #274046);
 }
 
 ul {
@@ -42,6 +43,7 @@ li {
     color: blue;
     font-size: 1.6rem;
     background-color: lightblue;
+
 }
 
 
@@ -59,7 +61,7 @@ li {
     color: white;
     text-align: center;
     padding: 14px 16px;
-    border-radius: 25%
+
 }
 
 li a:hover:not(.is-active) {
