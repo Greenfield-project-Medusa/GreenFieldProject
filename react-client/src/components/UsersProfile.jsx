@@ -1,5 +1,5 @@
 import React from 'react';
-import { PanelGroup, Panel, Button, Well, FormControl } from 'react-bootstrap';
+import { PanelGroup, Panel, Button, Well, FormControl, Row, Col, Thumbnail } from 'react-bootstrap';
 import $ from 'jquery'
 
 class UsersProfile extends React.Component {
@@ -36,7 +36,31 @@ class UsersProfile extends React.Component {
 
   render() {
     return(
-      <h1>Hello</h1>
+      <div className = 'container'>
+      <br />
+        <div className = 'outerBorder'>
+          <Row>
+            <Col md={3}>
+              <Thumbnail src="http://www.redactorpublishing.com/gallery/avatar.png" height="250px">
+                <h3>{this.state.user.name}</h3>
+                <p>{this.state.user.nationality}</p>
+                <p>
+                  here for rating
+                </p>
+              </Thumbnail>
+            </Col>
+            <Col md={9}>
+              <Thumbnail>
+                <h3>{this.state.user.name}</h3>
+                <p>{this.state.user.nationality}</p>
+                <p>
+                  here for rating
+                </p>
+              </Thumbnail>
+            </Col>
+          </Row>
+        </div>
+      </div>
     )
   }
 }
