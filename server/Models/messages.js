@@ -34,7 +34,6 @@ message.save(function(error){
 	
 })
  //console.log('here------------------',data);
-  Message.create(data, callback)
 };
 
 

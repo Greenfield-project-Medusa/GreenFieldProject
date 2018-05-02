@@ -6,10 +6,12 @@ class Masseges extends React.Component{
 		super(props);
 		this.state={
 			text:'',
-			reciver:''
+			reciver:'',
+			sender:''
 		}
 	this.handleChange1=this.handleChange1.bind(this)
 	this.handleChange2=this.handleChange2.bind(this)
+	this.handleChange3=this.handleChange3.bind(this)	
 	this.send=this.send.bind(this)
 	}
 
@@ -21,6 +23,11 @@ class Masseges extends React.Component{
 	handleChange2(e){
 		this.setState({
 			reciver:e.target.value
+		})
+	}
+	handleChange3(e){
+		this.setState({
+			sender:e.target.value
 		})
 	}
 	send(){
@@ -47,8 +54,10 @@ class Masseges extends React.Component{
 	render(){
 		return (
 			<div>
-			<input type='text' name='t' value={this.state.text} onChange={this.handleChange1} />
-			<input type='text' name='r' value={this.state.reciver} onChange={this.handleChange2} />
+			<input type='text' name='t' value={this.state.text} onChange={this.handleChange1} placeholder='enter your message' />
+			<input type='text' name='r' value={this.state.reciver} onChange={this.handleChange2} placeholder='to' />
+			<input type='text' name='s' value={this.state.sender} onChange={this.handleChange3} placeholder='your name' />
+			
 			<Button onClick={this.send}>SEND</Button>
 			</div>
 			)
