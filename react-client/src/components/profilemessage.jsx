@@ -5,31 +5,35 @@ class Pmessage extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
-			messages:[],
-			show:false
+			messages:[]
+			
 		}
 		this.show=this.show.bind(this);
 		this.handleHide=this.handleHide.bind(this);
 	}
 
 	componentDidMount(){
+
 		var that=this;
 		
 		axios.get('/messages')
 		.then(function(response){
-			console.log('axios data ==========',response.data)
+			var name=that.props.username;
 			that.setState({
-				messages:response.data
+				messages:response.data,
 			})
 			
-			console.log('state.message',that.state.messages)
 		})
+			
+
 	}
 
 	show(){
-		console.log('message',this.props)
 		this.setState({
 			show:true
+		})
+		this.setState({
+			username:this.props
 		})
 	}
 
@@ -37,8 +41,29 @@ class Pmessage extends React.Component{
 		this.setState({
 			show:false
 		})
+
 	}
+
+	
 	render(){
+		var that=this;
+	console.log('props',this.props.username)
+	var arr = [];
+	var newMsg=[];
+	var readMsg=[];
+	var m=0;
+    this.state.messages.forEach(function(item, index) {
+    		console.log('1111111111111111',item.username)
+	console.log('2222222222222222',that.props.username)
+      if(item.username===that.props.username&&!(item.read)){
+      newMsg.push(item)
+      }
+      if(item.username===that.props.username&&item.read &&m<3){
+      	readMsg.push(item);
+      	m++
+      }
+
+    })
 		return(
 			<div>
 			<Button onClick={this.show}>
@@ -51,7 +76,23 @@ class Pmessage extends React.Component{
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-				Body
+				{readMsg.map(function(result){
+					return(
+						<div>
+					<h1>old {result.text}</h1>
+					<h3>from: {result.sender}</h3>
+						</div>
+						)
+				})}
+				{newMsg.map(function(result){
+					return(
+						<div>
+					<h1>{result.text}</h1>
+					<h3>from: {result.sender}</h3>
+						</div>
+						)
+					}
+				)}
 				</Modal.Body>
 				<Modal.Footer>
 				footer

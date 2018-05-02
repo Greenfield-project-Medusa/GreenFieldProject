@@ -38,14 +38,17 @@ getUserInfo(){
     console.log('posts(((((((((((((( ',posts)
     this.setState({username:posts.userName})
     console.log('state.posts(((((((((((((( ',this.state.username)
+
   })
   .catch(function (error) {
     console.log(error);
   });
+  console.log('userrrrrrrrrrrrrrrrrrrrrrrrrr',this.props.username)
 }
 
 render() {
-  console.log('this.state.jobs++++++++++',this.state)
+ var username1=this.state.username;
+ console.log('inside the render ',this.state.username)
   var arr = [];
   
     this.state.jobs.forEach(function(item, index) {

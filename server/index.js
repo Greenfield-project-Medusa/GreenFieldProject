@@ -61,6 +61,17 @@ app.get('/messages',function(req,res){
 		}
 	});
 });
+app.put('/messages',function(req,res){
+	
+	Msgs.updateMsg(function(err,msg){
+		console.log('asdasds ======',msg)
+		if(err){
+			console.log(err)
+		}else{
+			res.send(msg)
+		}
+	})
+})
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
