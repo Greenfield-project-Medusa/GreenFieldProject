@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import {Button,Form,FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 import axios from 'axios';
 class Masseges extends React.Component{
 	constructor(props){
@@ -7,7 +7,7 @@ class Masseges extends React.Component{
 		this.state={
 			text:'',
 			phone:'',
-			sender:''
+			sender:'',
 		}
 	this.handleChange1=this.handleChange1.bind(this)
 	this.handleChange2=this.handleChange2.bind(this)
@@ -32,7 +32,7 @@ class Masseges extends React.Component{
 	}
 	send(){
 		var that=this
-		console.log('oooooooooooooooooooooooooooo',this.props)
+		console.log('oooooooooooooooooooooooooooo',this.props.username)
 		console.log('send',this.state.text)
 		console.log('to',this.state.reciver)
 		axios({
@@ -56,16 +56,46 @@ class Masseges extends React.Component{
 	}
 
 	render(){
-		return (
+		return(
 			<div>
-			<input type='text' name='t' value={this.state.text} onChange={this.handleChange1} placeholder='enter your message' />
-			<input type='text' name='r' value={this.state.phone} onChange={this.handleChange2} placeholder='phone number' />
-			<input type='text' name='s' value={this.state.sender} onChange={this.handleChange3} placeholder='your name' />
-			
-			<Button onClick={this.send}>SEND</Button>
+			<Form inline>
+  <FormGroup controlId="formInlineName">
+    <ControlLabel>Name</ControlLabel>{' '}
+    <FormControl type="text" value={this.state.sender} onChange={this.handleChange3} placeholder="Your name" />
+  </FormGroup>{' '}
+  <FormGroup controlId="formInlinePhone">
+    <ControlLabel >Phone#</ControlLabel>{' '}
+    <FormControl type="text" value={this.state.phone} onChange={this.handleChange2} placeholder="Your phone number" />
+  </FormGroup>{' '}
+  <FormGroup controlId="formInlineText">
+    <ControlLabel>Message</ControlLabel>{' '}
+    <FormControl type="text" value={this.state.text} onChange={this.handleChange1} placeholder="Write your message"/>
+  </FormGroup>{' '}
+  <Button onClick={this.send}>Send</Button>
+</Form>
 			</div>
 			)
+
+
 	}
+	// render(){
+	// 	return (
+
+	// 		<div>
+			
+	// 		<input type='text' value={this.state.phone} onChange={this.handleChange2} placeholder='phone number' />
+	// 		<input type='text' value={this.state.sender} onChange={this.handleChange3} placeholder='your name' />
+	// 		<input type='text' value={this.state.text} onChange={this.handleChange1} placeholder='enter your message' />
+			
+	// 		<Button onClick={this.send}>SEND</Button>
+	// 		</div>
+
+
+
+	// 		)
+	// }
+
 }
+
 
 export default Masseges;

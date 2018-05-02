@@ -54,9 +54,9 @@ var retriveMsg =function(callback){
 }
 
 
-var updateMsg=function(callback){
-	Message.find({username:"monther"},function(err, messages) {
-  messages.forEach(function(message) {
+var updateMsg=function(data,callback){
+	Message.find({username:data},function(err, messages) {
+    messages.forEach(function(message) {
     message.read = true;
     message.save();
   });
