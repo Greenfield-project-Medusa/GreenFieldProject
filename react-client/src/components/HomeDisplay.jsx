@@ -38,7 +38,9 @@ render() {
               {this.props.item.user}
             </Link>
           </ListGroupItem><br />
-		    	<ListGroupItem>rate goes here</ListGroupItem>
+		    	<ListGroupItem>
+          <Rate user={this.props.item.user}/>
+          </ListGroupItem>
  				 <ListGroupItem>
          <img src={image1} />                        
          </ListGroupItem>
@@ -57,7 +59,6 @@ render() {
     	<Panel.Footer>
   		  {this.props.item.created_at.slice(0, 10)}
     	</Panel.Footer>
-      <Rate />
   </Panel>
 </div>
 
