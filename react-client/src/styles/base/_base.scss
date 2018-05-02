@@ -68,7 +68,7 @@ li {
 }
 
 li a:hover:not(.is-active) {
-    background-color: gray;
+    background-color: #35bcf8;
 }
 
 .is-active {
@@ -100,12 +100,7 @@ li a:hover:not(.is-active) {
 }
 
 #catagory {
-    border-radius: 10px; 
-    height: 70px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding: 10px;
-    margin-bottom: 25px;
+    margin: auto;
 }
 
 #catB {
@@ -154,11 +149,6 @@ li a:hover:not(.is-active) {
     font-size: 18px;
 }
 
-#loginimg {
-    width: 180px;
-    height: 180px
-}
-
 #b {
     color: #c7c7c7
 }
@@ -172,7 +162,7 @@ li a:hover:not(.is-active) {
     width: 430px;
     padding: 10px 38px 50px;
     margin: 0 auto;
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 10px;
 }
 
@@ -219,27 +209,12 @@ li a:hover:not(.is-active) {
 #jobform {
     font-size: 17px;
     width: 900px;
-    height: 460px;
     border-radius: 10px; 
+    background : #FFF;
 }
 
 #req {
    font-size: 15px; 
-}
-
-#signUpPage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
-    background-size: cover;
-    height: 93vh;
-    width: 100vw;
-    color: navyblue;
-}
-
-#loginpage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
-    background-size: cover;
-    height: 93vh;
-    width: 100vw;
 }
 
 #postTime {
@@ -251,11 +226,6 @@ li a:hover:not(.is-active) {
   font-family: Mina;
   color: #141414;
   font-size: 18px;
-}
-
-#signup2 {
-  width: 870px;
-  height: 420px;
 }
 
 #profile {

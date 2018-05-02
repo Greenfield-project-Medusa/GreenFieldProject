@@ -26,8 +26,8 @@ var usersSchema = mongoose.Schema({
         required: true
       },
   nationality: String,
-  rate: [Number]
-
+  rate: [Number],
+  image: String
 });
 
 //User Model
