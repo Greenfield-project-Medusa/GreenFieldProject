@@ -84,7 +84,7 @@ render() {
   return (
   
     <div className='container'>
-    <Masseges />
+    
       <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
     <br />
     <div>

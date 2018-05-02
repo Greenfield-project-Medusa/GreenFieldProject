@@ -7,7 +7,8 @@ var messagesSchema=mongoose.Schema({
 	text:String,
 	read:{type:Boolean,default:false},
 	sender:String,
-	cdate:{type:Date,default:Date.now}
+	cdate:{type:Date,default:Date.now},
+	phone:Number
 	
 }) 
 
@@ -20,6 +21,7 @@ var createmsg = function(data, callback){
  	text:data.text,
  	read:data.read,
  	sender:data.sender,
+ 	phone:data.phone
  })
 
 message.save(function(error){

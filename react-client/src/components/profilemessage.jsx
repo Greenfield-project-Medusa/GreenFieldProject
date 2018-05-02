@@ -79,8 +79,8 @@ class Pmessage extends React.Component{
 				{readMsg.map(function(result){
 					return(
 						<div>
-					<h1>old {result.text}</h1>
-					<h3>from: {result.sender}</h3>
+					<h6>old {result.text}</h6>
+					<h6>from: {result.sender}</h6>
 						</div>
 						)
 				})}
@@ -95,7 +95,7 @@ class Pmessage extends React.Component{
 				)}
 				</Modal.Body>
 				<Modal.Footer>
-				footer
+				<Button onClick={this.handleHide}>Close</Button>
 				</Modal.Footer>
 			</Modal>
 			</div>
