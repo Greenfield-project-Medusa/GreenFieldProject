@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
+import $ from 'jquery';
+
 
 class JobsForm extends React.Component {
 	constructor(props) {
@@ -12,6 +14,8 @@ class JobsForm extends React.Component {
 			jobDescription: '',
 			category: '',
 			location:'',
+			nameNewCategory:'',
+			arr:[],
 			from: '',
 			to: ''},
 			message:''
@@ -19,7 +23,10 @@ class JobsForm extends React.Component {
 		}
 		this.baseState = this.state;
 		this.onChange = this.onChange.bind(this);
+		// this.onClick = this.onClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleCatogryChange = this.handleCatogryChange.bind(this);
+		this.addCatogry=this.addCatogry.bind(this)
 	}
 
 	onChange(e) {
@@ -29,7 +36,39 @@ class JobsForm extends React.Component {
       states[name] = value;
       this.setState({states:states});  
 	};
-	
+	handleCatogryChange(e){
+	 this.setState({nameNewCategory:e.target.value})
+	 
+	}
+	addCatogry(){ 
+		$.ajax({
+				url:'\category',
+				method:'POST',
+				Content-Type : "application/json",
+				data:{nameNewCategory:this.state.nameNewCategory},
+
+			 success:function(){
+
+			},
+				error:function(){
+
+				}
+		})
+
+	// 	axios({
+ //              method: 'post',
+ //              url: '/category',
+ //              data: {cat:"fjsdfjsh"}
+ //            })
+ //            .then(function (response) {
+ //                console.log(response);
+ //              })
+ //              .catch(function (error) {
+ //                console.log(error);
+ //            });
+	// 
+}
+
 
 	handleSubmit(event) {
 		var that=this;
@@ -43,6 +82,7 @@ class JobsForm extends React.Component {
     		console.log(error);
   			});
 	};
+
 
 	render() {
 		return (
@@ -76,7 +116,8 @@ class JobsForm extends React.Component {
         </div>
 			</label>
 			</Col>
-			<Col md={1}>
+			<Col md={3}>
+			<span>add category</span>
 			</Col>
 			</Row>
 			
@@ -99,6 +140,15 @@ class JobsForm extends React.Component {
 					</label>
 				</Col>
 			</Row>
+			<Col md={3}>
+			<label >
+			<FormControl maxLength={20} type="text" name="nameNewCatogry" placeholder = "name of new  Catogry" autoFocus required onChange={this.handleCatogryChange} />
+			</label></Col>
+			
+				 <Button id="cat" className="btn btn-primary" type="submit" bsSize="large" onClick={this.addCatogry} >
+					     add Catogry
+				  </Button>
+			</Row> <br />
 			<Row>
 			<Col md={1}>
 			</Col> 

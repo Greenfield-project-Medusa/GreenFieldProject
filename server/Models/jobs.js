@@ -27,14 +27,16 @@ var jobsSchema = mongoose.Schema({
     default:Date.now
   }
 });
-
+////////////////////////
 
 /////Jobs Model
 var Jobs = mongoose.model('Jobs', jobsSchema);
 
 var createJob = function(userName,data, callback){
+
   data["user"]=userName;
   Jobs.create(data, callback)
+  console.log(data)
 };
 
 // i think we don't need to pass data because 
@@ -53,10 +55,9 @@ var allJobs = function (callback){
   }
 ], function (err, data) {
         if (err) {
-          console.log(err);
             callback(err, null);
         }
-        console.log(data);
+     
         callback(null, data)
     });
 };
@@ -101,10 +102,10 @@ var regexValue = '\.*'+title+'\.*';
   
 ], function (err, data) {
         if (err) {
-          console.log(err);
+       
             callback(err, null);
         }
-        console.log(data);
+    
         callback(null, data)
     });
   
@@ -139,10 +140,11 @@ var jobsByCategory = function(category, callback){
   
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          
             callback(err, null);
         }
-        console.log(data);
+   
+
         callback(null, data)
     });
  }else{
@@ -158,10 +160,10 @@ var jobsByCategory = function(category, callback){
   }
 ], function (err, data) {
         if (err) {
-          console.log(err);
+          
             callback(err, null);
         }
-        console.log(data);
+     
         callback(null, data)
     });
  }
@@ -194,6 +196,8 @@ var updateUserJob = function(jobTitle,user, updatedData, callback){
 var updateJobs = function(jobTitle, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle}, {$set: updatedData}, callback)
 };
+
+
 
 var deleteJob = function(jobTitle, callback){
   Jobs.deleteOne({jobTitle: jobTitle}, callback)

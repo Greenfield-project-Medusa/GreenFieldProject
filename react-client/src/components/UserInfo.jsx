@@ -110,7 +110,8 @@ render() {
     <Col md={4}>
     </Col>
       	<Col md={4}>   
-	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button> 
+	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button>
+          
 		</Col>
 	  </Row>
       </form>
