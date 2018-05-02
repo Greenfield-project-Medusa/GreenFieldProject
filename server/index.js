@@ -5,6 +5,7 @@ var redirect = require('express-redirect');
 var db = require('../database-mongo/index.js');
 var Users = require('./Models/users');
 var Jobs = require('./Models/jobs');
+var Msgs=require('./Models/messages');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var expressValidtor = require('express-validator');
@@ -46,7 +47,31 @@ app.use(session({
 // 	res.locals.session=req.session;
 // 	next();
 // })
-
+app.post('/messages',function(req,res){
+	console.log('req ----------' ,req.body)
+	Msgs.createmsg(req.body);
+});
+app.get('/messages',function(req,res){
+	Msgs.retriveMsg(function(err,msg){
+		console.log('hello from message')
+		if(err){
+			console.log(err)
+		}else{
+			res.send(msg)
+		}
+	});
+});
+app.put('/messages',function(req,res){
+	
+	Msgs.updateMsg(function(err,msg){
+		console.log('asdasds ======',msg)
+		if(err){
+			console.log(err)
+		}else{
+			res.send(msg)
+		}
+	})
+})
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
