@@ -55,6 +55,7 @@ var retriveMsg =function(callback){
 
 
 var updateMsg=function(data,callback){
+	console.log('message file data =====',data)
 	Message.find({username:data},function(err, messages) {
     messages.forEach(function(message) {
     message.read = true;

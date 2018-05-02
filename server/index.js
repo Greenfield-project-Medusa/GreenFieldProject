@@ -62,6 +62,7 @@ app.get('/messages',function(req,res){
 	});
 });
 app.put('/messages',function(req,res){
+	console.log('index file req =======',req.body)
 	Msgs.updateMsg(req.body.username,function(err,msg){
 		if(err){
 			console.log(err)
