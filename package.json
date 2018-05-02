@@ -48,6 +48,7 @@
     "react-stormpath": "^2.0.1",
     "reactstrap": "^5.0.0-beta.3",
     "sass-loader": "^7.0.1",
+    "star-rating-react": "0.0.1",
     "style-loader": "^0.21.0"
   }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Masseges from './masseges.jsx'
 import { Button, FormControl, ButtonToolbar,Panel,ListGroup,ListGroupItem } from 'react-bootstrap';
+import Rate from './Rate.jsx'
 class HomeDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,15 @@ render() {
               {this.props.item.user}
             </Link>
           </ListGroupItem><br />
+
 		    	<ListGroupItem>rate goes here</ListGroupItem>
+		    	<ListGroupItem>
+          <Rate user={this.props.item.user}/>
+          </ListGroupItem>
+ 				 <ListGroupItem>
+         <img src={image1} />                        
+         </ListGroupItem>
+
 		   		</ListGroup>
     		</div>
     		<div className='col-md-9'>
