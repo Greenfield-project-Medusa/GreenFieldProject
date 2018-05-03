@@ -1,12 +1,13 @@
 import React from 'react';
-import {Button ,Modal} from 'react-bootstrap';
+import {Button ,Modal,ListGroupItem,ListGroup} from 'react-bootstrap';
 import axios from 'axios';
 class Pmessage extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
-			messages:[]
-			
+			messages:[],
+			show:false,
+			username:''
 		}
 		this.show=this.show.bind(this);
 		this.handleHide=this.handleHide.bind(this);
@@ -24,17 +25,27 @@ class Pmessage extends React.Component{
 			})
 			
 		})
+
+
 			
 
 	}
 
 	show(){
+		var that=this
 		this.setState({
-			show:true
+			show:true,
+			username:this.props.username
 		})
-		this.setState({
-			username:this.props
-		})
+		
+		console.log('asdasdas,asdasdas ',that.props.username)
+		  axios.put('/messages', {username:that.props.username})
+          .then(function (response) {
+            console.log(response);
+        })
+          .catch(function (error) {
+            console.log(error);
+        });
 	}
 
 	handleHide(){
@@ -45,6 +56,7 @@ class Pmessage extends React.Component{
 	}
 
 	
+
 	render(){
 		var that=this;
 	console.log('props',this.props.username)
@@ -53,8 +65,6 @@ class Pmessage extends React.Component{
 	var readMsg=[];
 	var m=0;
     this.state.messages.forEach(function(item, index) {
-    		console.log('1111111111111111',item.username)
-	console.log('2222222222222222',that.props.username)
       if(item.username===that.props.username&&!(item.read)){
       newMsg.push(item)
       }
@@ -76,26 +86,30 @@ class Pmessage extends React.Component{
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-				{readMsg.map(function(result){
-					return(
-						<div>
-					<h1>old {result.text}</h1>
-					<h3>from: {result.sender}</h3>
-						</div>
-						)
-				})}
+				<ListGroup>
 				{newMsg.map(function(result){
 					return(
 						<div>
-					<h1>{result.text}</h1>
-					<h3>from: {result.sender}</h3>
+  					<ListGroupItem bsStyle="success">{result.text }{' I am '}{ result.sender}{' call me '}{result.phone}</ListGroupItem>
+						</div>
+						)
+				})}
+				</ListGroup>
+				<ListGroup>
+				{readMsg.map(function(result){
+					return(
+						<div>
+  					<ListGroupItem bsStyle="warning">{result.text }{' I am '}{ result.sender}{' call me '}{result.phone}</ListGroupItem>
 						</div>
 						)
 					}
 				)}
+				</ListGroup>
 				</Modal.Body>
 				<Modal.Footer>
-				footer
+				
+				<Button onClick={this.handleHide} bsStyle="primary">Close</Button>
+				 
 				</Modal.Footer>
 			</Modal>
 			</div>

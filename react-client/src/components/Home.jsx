@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {Button,Form,FormGrop,ControlLable,FormControl} from 'react-bootstrap';
+
 import HomeDisplay from './HomeDisplay.jsx';
 import Search from './Search.jsx'
 import Masseges from './masseges.jsx'
@@ -84,7 +86,7 @@ render() {
   return (
   
     <div className='container'>
-    <Masseges />
+    
       <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
     <br />
     <div>

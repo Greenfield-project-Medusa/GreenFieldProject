@@ -7,7 +7,8 @@ var messagesSchema=mongoose.Schema({
 	text:String,
 	read:{type:Boolean,default:false},
 	sender:String,
-	cdate:{type:Date,default:Date.now}
+	cdate:{type:Date,default:Date.now},
+	phone:Number
 	
 }) 
 
@@ -20,6 +21,7 @@ var createmsg = function(data, callback){
  	text:data.text,
  	read:data.read,
  	sender:data.sender,
+ 	phone:data.phone
  })
 
 message.save(function(error){
@@ -34,7 +36,6 @@ message.save(function(error){
 	
 })
  //console.log('here------------------',data);
-  Message.create(data, callback)
 };
 
 
@@ -53,9 +54,10 @@ var retriveMsg =function(callback){
 }
 
 
-var updateMsg=function(callback){
-	Message.find({username:"monther"},function(err, messages) {
-  messages.forEach(function(message) {
+var updateMsg=function(data,callback){
+	console.log('message file data =====',data)
+	Message.find({username:data},function(err, messages) {
+    messages.forEach(function(message) {
     message.read = true;
     message.save();
   });

@@ -62,9 +62,8 @@ app.get('/messages',function(req,res){
 	});
 });
 app.put('/messages',function(req,res){
-	
-	Msgs.updateMsg(function(err,msg){
-		console.log('asdasds ======',msg)
+	console.log('index file req =======',req.body)
+	Msgs.updateMsg(req.body.username,function(err,msg){
 		if(err){
 			console.log(err)
 		}else{
@@ -72,6 +71,8 @@ app.put('/messages',function(req,res){
 		}
 	})
 })
+
+
 //it renders all the jobs
 app.get('/jobs', function(req, res){
 	Jobs.allJobs(function(err, jobs){
