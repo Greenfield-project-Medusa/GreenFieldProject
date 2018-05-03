@@ -84,7 +84,6 @@ class Home extends React.Component {
         <br />
         <div>
           <center>
-            <Masseges />
             <br />
             <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
           </center>
