@@ -144,8 +144,20 @@ app.get('/userI/:username', function(req, res){
 });
 
 app.post('/postRate', function(req,res){
-	var rate=req.body
-	Users.postRating()
+	var rate=req.body.rate
+	var user = req.body.user
+	console.log('server')
+	Users.postRating(user,rate, function (err, user) {
+		if (err) {
+	      console.log(err)
+	    } else if (!user) {
+	      res.send('No user found')
+	    } else {
+	      user.rate.push(rate)
+	      res.send(user)
+	    }
+	    user.save()
+	})
 
 })
 
