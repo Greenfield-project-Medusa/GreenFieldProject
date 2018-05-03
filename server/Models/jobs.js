@@ -53,10 +53,8 @@ var allJobs = function (callback){
   }
 ], function (err, data) {
         if (err) {
-          console.log(err);
             callback(err, null);
         }
-        console.log(data);
         callback(null, data)
     });
 };
@@ -121,7 +119,6 @@ var jobByUserName = function(userName, callback){
 };
 
 var jobsByCategory = function(category, callback){
-    console.log("Helooo22222",category)
 
   if(category.category!=="All"){
    Jobs.aggregate([
@@ -195,13 +192,12 @@ var updateJobs = function(jobTitle, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle}, {$set: updatedData}, callback)
 };
 
-var deleteJob = function(jobTitle, callback){
-  Jobs.deleteOne({jobTitle: jobTitle}, callback)
+var deleteJob = function(jobTitle, userName, callback){
+  Jobs.deleteOne({jobTitle: jobTitle, user: userName}, callback)
 };
 
 
 var jobsByLocation = function(location, callback){
-  console.log("Helooo1111",location)
   if(location.location!=="All"){
    Jobs.aggregate([
     {$match:{"location":location.location}},

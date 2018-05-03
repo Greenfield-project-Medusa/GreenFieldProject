@@ -26,8 +26,8 @@ var usersSchema = mongoose.Schema({
         required: true
       },
   nationality: String,
-  rate: [Number]
-
+  rate: [Number],
+  image: String
 });
 
 //User Model
@@ -47,6 +47,14 @@ var createUsers = function(data, callback){
   hashPassword(data.password, function(hashed){
     userdata["password"] = hashed;
   });
+  if (userdata.image.length === 0) {
+    if (userdata.gender === "Female") {
+      userdata.image = 'https://cdn2.iconfinder.com/data/icons/rcons-user/32/female-shadow-circle-512.png';    
+    } else {
+      userdata.image = "https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-1-1/128/gender-male2-512.png";
+    }    
+  }
+
   ///save to database
   Users.create(userdata, callback);
 };

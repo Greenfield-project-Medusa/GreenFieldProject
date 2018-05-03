@@ -38,10 +38,10 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div id="catagory" className="search-bar form-inline">  
+      <div>  
         <Form inline>
           <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Category</ControlLabel>
+            <ControlLabel>Category </ControlLabel>{' '}
             <FormControl componentClass="select" placeholder="Category" onChange={this.handleCategoryChange} value={this.state.val}>
               <option value="All">All Catogery</option>
               <option value="Driver">Driver</option>
@@ -50,9 +50,9 @@ class Search extends React.Component {
               <option value="Babysitting">Babysitting</option>
               <option value="Tutoring">Tutoring</option>
             </FormControl>
-          </FormGroup>
+          </FormGroup>{'  '}
           <FormGroup controlId="formControlsSelect">
-            <ControlLabel> Location</ControlLabel>
+            <ControlLabel> Location </ControlLabel>{' '}
             <FormControl componentClass="select" placeholder="Location" onChange={this.handleLocationChange} value={this.state.loc}>
               <option value="All">All Locations</option>
               <option value="Amman">Amman</option>
@@ -61,9 +61,9 @@ class Search extends React.Component {
               <option value="Jerash">Jerash</option>
               <option value="Aqaba">Aqaba</option>
             </FormControl>
-          </FormGroup>
+          </FormGroup>{'   '}
           <FormGroup controlId="formControlsSelect">
-            <ControlLabel> Search</ControlLabel>
+            <ControlLabel> Search </ControlLabel>{' '}
               <FormControl
                 type="text"
                 value={this.state.value}

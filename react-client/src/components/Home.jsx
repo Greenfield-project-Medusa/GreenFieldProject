@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import {Button,Form,FormGrop,ControlLable,FormControl} from 'react-bootstrap';
-
 import HomeDisplay from './HomeDisplay.jsx';
 import Search from './Search.jsx'
 import Masseges from './masseges.jsx'
@@ -52,15 +51,13 @@ class Home extends React.Component {
   searchJobTitle(query) {
     var that = this;
      axios.post('/someJobs', {query:query})
-          .then(function (response) {
-            const posts = response.data;
-            that.setState({items: posts});
-
-        })
-          .catch(function (error) {
-            console.log(error);
-        });
-  
+      .then(function (response) {
+          const posts = response.data;
+          that.setState({items: posts});
+      })
+        .catch(function (error) {
+          console.log(error);
+      }); 
   }
 
 //make new get requests for each filter
@@ -69,35 +66,33 @@ class Home extends React.Component {
     axios.get('/jobs')
     .then(response => {
       console.log(response.data)
-    const posts = response.data;
-    this.setState({items:posts});
-    
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
-
-render() {
-  var arr = [];
-    this.state.items.forEach(function(item) {
-      arr.push(<HomeDisplay item={item} />)
+      const posts = response.data;
+      this.setState({items:posts});
     })
-  return (
-  
-    <div className='container'>
-    
-      <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
-    <br />
-    <div>
-    </div>
-    <div>
-    {arr}
-    </div>
-    </div>
-    
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  render() {
+    var arr = [];
+      this.state.items.forEach(function(item) {
+        arr.push(<HomeDisplay item={item} />)
+      })
+    return (
+      <div className='container'>
+        <br />
+        <div>
+          <center>
+            <br />
+            <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>
+          </center>
+        </div>
+        <div>
+          {arr}
+        </div>
+      </div>
     )
-}
+  }
 }
 export default Home;
-//    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} searchJobLocation={this.searchJobLocation.bind(this)}/>

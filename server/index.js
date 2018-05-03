@@ -30,7 +30,7 @@ redirect(app);
 
 //connects the server with client side
 app.use(express.static(__dirname + '/../react-client/dist'));
-
+app.use(bodyParser({limit: '50mb'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -119,7 +119,6 @@ app.put('/updateUserJob', function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-
 			res.send(user);
 		}
 	});
@@ -130,7 +129,6 @@ app.get('/userInfo', function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-
 			res.send(user);
 		}
 	});
@@ -151,7 +149,6 @@ app.get('/userI/:username', function(req, res){
 app.put('/updateUser', function (req, res) {
 	var query = req.session.userName;
 	var updatedData = req.body;
-	console.log(updatedData)
 	Users.updateUsers(query, updatedData, function(err, users){
 		if(err){
 			console.log(err);
@@ -185,7 +182,6 @@ app.post('/login', function (req, res) {
 		if(err){
 			res.send(err);
 		} else {
-
 			req.session.userName = user.userName;
 			res.locals.login = user;
 			res.locals.session = req.session;
@@ -200,7 +196,6 @@ app.post('/job', function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			
 			res.send(jobs);
 		}
 	})
@@ -239,8 +234,8 @@ app.post('/jobLocation', function (req, res) {
 });
 
 //?
-app.delete('/:jobTitle', function(req, res){
-	Jobs.deleteJob(req.body.jobTitle, function(err, job){
+app.delete('/delete/:jobTitle', function(req, res){
+	Jobs.deleteJob(req.params.jobTitle, req.session.userName, function(err, job){
 		if(err){
 			console.log(err);
 		} else {
@@ -248,6 +243,7 @@ app.delete('/:jobTitle', function(req, res){
 		}
 	});
 });
+
 app.get('*', function (req, res){
     res.sendFile(path.resolve(__dirname, '../react-client/dist', 'index.html'));
 })
