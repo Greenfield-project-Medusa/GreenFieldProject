@@ -5,7 +5,6 @@ var redirect = require('express-redirect');
 var db = require('../database-mongo/index.js');
 var Users = require('./Models/users');
 var Jobs = require('./Models/jobs');
-var Msgs=require('./Models/messages');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var expressValidtor = require('express-validator');
@@ -71,7 +70,6 @@ app.put('/messages',function(req,res){
 		}
 	})
 })
-
 
 //it renders all the jobs
 app.get('/jobs', function(req, res){
@@ -144,6 +142,24 @@ app.get('/userI/:username', function(req, res){
 		}
 	});
 });
+
+app.post('/postRate', function(req,res){
+	var rate=req.body.rate
+	var user = req.body.user
+	console.log('server')
+	Users.postRating(user,rate, function (err, user) {
+		if (err) {
+	      console.log(err)
+	    } else if (!user) {
+	      res.send('No user found')
+	    } else {
+	      user.rate.push(rate)
+	      res.send(user)
+	    }
+	    user.save()
+	})
+
+})
 
 //it updates the user information
 app.put('/updateUser', function (req, res) {

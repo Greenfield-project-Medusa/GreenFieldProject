@@ -28,7 +28,8 @@ var usersSchema = mongoose.Schema({
   nationality: String,
   rate: [Number],
   image: String
-});
+},
+{  usePushEach: true});
 
 //User Model
 var Users = mongoose.model('Users', usersSchema);
@@ -103,11 +104,27 @@ var deleteUser = function(userName, callback){
   ///delete user
   Users.deleteOne({userName:userName}, callback)
 }
+
+var postRating= function(userName, rate, callback){
+  console.log('users')
+   Users.findOne({userName:userName}).exec(callback)
+  //   if (err) {
+  //     console.log(err)
+  //   } else if (!user) {
+  //     res.send('No user found')
+  //   } else {
+  //     user.rate.push(rate)
+  //     res.send(user)
+  //   }
+  //   user.save()
+  //})
+}
 module.exports.Users = Users;
 module.exports.createUsers = createUsers;
 module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
+module.exports.postRating= postRating;
 
 
