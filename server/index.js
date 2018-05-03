@@ -1,11 +1,15 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 var redirect = require('express-redirect');
 var db = require('../database-mongo/index.js');
 var Users = require('./Models/users');
 var Jobs = require('./Models/jobs');
+<<<<<<< a04128845a2b3519b88d8d73670c7d7fe9401242
 var Msgs=require('./Models/messages');
+=======
+var Category = require('./Models/category');
+>>>>>>> addCatogry
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var expressValidtor = require('express-validator');
@@ -32,7 +36,7 @@ redirect(app);
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(expressValidtor());
 app.use(session({
@@ -42,6 +46,7 @@ app.use(session({
 	store:new mongoStore({mongooseConnection: mongoose.connection}),
 	cookie:{maxAge: 180*60*1000}
 }));
+// app.use("/category",Category)
 
 // app.use(function(req,res,next){
 // 	res.locals.session=req.session;
@@ -83,6 +88,7 @@ app.get('/jobs', function(req, res){
 		}
 	});	
 });
+
 app.get('/logged', function(req, res){
 	if(req.session.userName){
 		res.send(true)
@@ -90,6 +96,7 @@ app.get('/logged', function(req, res){
 		res.send(false)
 	}
 });
+
 //it renders the jobs for each individual user
 app.get('/userJobs', function(req, res){
 	Jobs.jobByUserName({"user": req.session.userName}, function(err, job){
@@ -205,7 +212,22 @@ app.post('/job', function(req, res){
 		}
 	})
 });
+////////////////////////////////////
+  app.get('/category',function(req,res){
+    Category.retrieve(req, res)
 
+  	});
+//////////////////
+app.post('/category', function(req, res){
+	console.log("--------tick-----",res)
+	Category.createCategorys(req, res)
+	// console.log("----------before---",req)
+
+
+
+})
+
+///////////////////////////////////////
 //it searches jobs by title
 app.post('/someJobs', function (req, res) {
 	Jobs.findSome(req.body.query, function(err, jobs){
