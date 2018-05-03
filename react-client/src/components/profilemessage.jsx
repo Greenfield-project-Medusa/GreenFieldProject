@@ -14,21 +14,19 @@ class Pmessage extends React.Component{
 	}
 
 	componentDidMount(){
-
 		var that=this;
-		
 		axios.get('/messages')
 		.then(function(response){
-			var name=that.props.username;
+			var arr = [];
+			for( var i = 0 ; i < response.data.length ; i++) {
+				if (response.data[i].username === that.props.username) {
+					arr.push(response.data[i])
+				}
+			}
 			that.setState({
-				messages:response.data,
+				messages:arr
 			})
-			
 		})
-
-
-			
-
 	}
 
 	show(){
@@ -37,8 +35,6 @@ class Pmessage extends React.Component{
 			show:true,
 			username:this.props.username
 		})
-		
-		console.log('asdasdas,asdasdas ',that.props.username)
 		  axios.put('/messages', {username:that.props.username})
           .then(function (response) {
             console.log(response);
@@ -55,11 +51,8 @@ class Pmessage extends React.Component{
 
 	}
 
-	
-
 	render(){
 		var that=this;
-	console.log('props',this.props.username)
 	var arr = [];
 	var newMsg=[];
 	var readMsg=[];
@@ -72,12 +65,11 @@ class Pmessage extends React.Component{
       	readMsg.push(item);
       	m++
       }
-
     })
 		return(
 			<div>
-			<Button onClick={this.show}>
-			Message	
+			<Button onClick={this.show} bsStyle='success' bsSize="large">
+			Messages	
 			</Button>
 			<Modal show={this.state.show} onHide={this.handleHide} container={this}>
 				<Modal.Header>
@@ -115,7 +107,6 @@ class Pmessage extends React.Component{
 			</div>
 			)
 	}
-
 }
 
 export default  Pmessage;

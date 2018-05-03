@@ -32,9 +32,6 @@ class Masseges extends React.Component{
 	}
 	send(){
 		var that=this
-		console.log('oooooooooooooooooooooooooooo',this.props.username)
-		console.log('send',this.state.text)
-		console.log('to',this.state.reciver)
 		axios({
 			method:'post',
 			url:'/messages',
@@ -44,7 +41,6 @@ class Masseges extends React.Component{
 				sender:this.state.sender,
 				phone:this.state.phone
 			},
-			 //config: { headers: {'Content-Type': 'multipart/form-data' }}
 		})
 		.then(function(responce){
 			console.log(responce);
@@ -78,22 +74,6 @@ class Masseges extends React.Component{
 
 
 	}
-	// render(){
-	// 	return (
-
-	// 		<div>
-			
-	// 		<input type='text' value={this.state.phone} onChange={this.handleChange2} placeholder='phone number' />
-	// 		<input type='text' value={this.state.sender} onChange={this.handleChange3} placeholder='your name' />
-	// 		<input type='text' value={this.state.text} onChange={this.handleChange1} placeholder='enter your message' />
-			
-	// 		<Button onClick={this.send}>SEND</Button>
-	// 		</div>
-
-
-
-	// 		)
-	// }
 
 }
 
