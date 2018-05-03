@@ -10,6 +10,7 @@ var session = require('express-session');
 var expressValidtor = require('express-validator');
 var mongoStore = require('connect-mongo')(session);
 var path = require('path');
+var Msgs = require('./Models/messages')
 
 //it generates a unique id for the session
 var generateSecret = function (){

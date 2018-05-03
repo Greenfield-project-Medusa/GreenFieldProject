@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import Pmessage from './profilemessage.jsx';
 class UserInfo extends React.Component {
    constructor(props) {
     super(props);
@@ -30,7 +31,6 @@ class UserInfo extends React.Component {
    	  axios.get('/userInfo')
     .then(response => {
     const posts = response.data;
-    console.log(posts);
     this.setState({states:posts});
     
   })
@@ -104,11 +104,14 @@ class UserInfo extends React.Component {
       	          onChange={this.onChange} value={this.state.states.age}/>
       	        </label><br />
         	    </Col><br /><br /><br />
-              <Col md={5}>
+              <Col md={4}>
               </Col>
-              <Col md={4}>   
+              <Col md={2}>   
         	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button> 
         		  </Col>
+              <Col md={2}>
+                <Pmessage username={this.props.username}/>
+              </Col>
         	  </Row>
           </form>
   	    </div>
