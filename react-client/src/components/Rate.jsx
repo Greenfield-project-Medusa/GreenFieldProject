@@ -9,7 +9,8 @@ class Rate extends React.Component {
     super(props);
  
     this.state = {
-      user:[]
+      user:[],
+      rating: 0
     };
     this.getRate = this.getRate.bind(this)
   }
@@ -23,8 +24,15 @@ class Rate extends React.Component {
     axios.get(`/useri/${this.props.user}`)
     .then(response => {
       var data = response.data;
-      this.setState({
-        user:data
+      var rate = data.rate
+      var result = 0 ;
+      for(var i = 0 ; i < rate.length ; i++) {
+        result+= rate[i];
+      }
+      var average = (result / rate.length);
+      that.setState({
+        user:data,
+        rating : average
       })
     })
     .catch(function (error){
@@ -34,7 +42,7 @@ class Rate extends React.Component {
 
   updateRate(user){
     var that=this;
-    axius.put('/updateUser')
+    axius.post('/postRate')
     .then(response => {
       var data=response.data;
       this.setState({
@@ -52,9 +60,9 @@ class Rate extends React.Component {
  
   render() {
     if (this.state.user.length === 0){
-      var rating = 0;
+      var rating = this.state.rating ;
     } else {
-      var rating = this.state.user.rate.length;
+      var rating = this.state.rating ;
     }
     return (                
       <div>

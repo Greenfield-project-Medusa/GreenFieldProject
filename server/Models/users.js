@@ -103,11 +103,20 @@ var deleteUser = function(userName, callback){
   ///delete user
   Users.deleteOne({userName:userName}, callback)
 }
+
+var postRating= function(rate,callback){
+  var r=Users.where({rate:rate})
+  if(err){
+    callback(err) 
+  }
+  callback(null, userdata)
+}
 module.exports.Users = Users;
 module.exports.createUsers = createUsers;
 module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
+module.exports.postRating= postRating;
 
 
