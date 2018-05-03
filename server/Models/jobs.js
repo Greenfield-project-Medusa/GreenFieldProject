@@ -192,8 +192,8 @@ var updateJobs = function(jobTitle, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle}, {$set: updatedData}, callback)
 };
 
-var deleteJob = function(jobTitle, callback){
-  Jobs.deleteOne({jobTitle: jobTitle}, callback)
+var deleteJob = function(jobTitle, userName, callback){
+  Jobs.deleteOne({jobTitle: jobTitle, user: userName}, callback)
 };
 
 

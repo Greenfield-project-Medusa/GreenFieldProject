@@ -234,8 +234,8 @@ app.post('/jobLocation', function (req, res) {
 });
 
 //?
-app.delete('/:jobTitle', function(req, res){
-	Jobs.deleteJob(req.body.jobTitle, function(err, job){
+app.delete('/delete/:jobTitle', function(req, res){
+	Jobs.deleteJob(req.params.jobTitle, req.session.userName, function(err, job){
 		if(err){
 			console.log(err);
 		} else {
@@ -243,6 +243,7 @@ app.delete('/:jobTitle', function(req, res){
 		}
 	});
 });
+
 app.get('*', function (req, res){
     res.sendFile(path.resolve(__dirname, '../react-client/dist', 'index.html'));
 })

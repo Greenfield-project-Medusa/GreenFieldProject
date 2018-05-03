@@ -18,7 +18,8 @@ class SignUpForm extends React.Component {
         age: '',
         nationality: '',
         image:''},
-      message:''
+      message:'',
+      messageImg:'Wait till upload complete'
     }
 
     this.onChange = this.onChange.bind(this);
@@ -48,10 +49,10 @@ class SignUpForm extends React.Component {
           data:test
         })
         .done (function (data) {
-          console.log(data.data.link)
           states['image'] = data.data.link;
           that.setState({
-            states: states
+            states: states,
+            messageImg:'Upload completed'
           });
         })
         .fail(function( jqXHR, textStatus ) {
@@ -155,6 +156,7 @@ class SignUpForm extends React.Component {
                 <FormGroup controlId="image-Uploader">
                   <ControlLabel>Upload Image
                    <FormControl onChange={this.onImageChange.bind(this)}  type='file' label='Image' name='image' />
+                    {this.state.messageImg}
                   </ControlLabel>
                 </FormGroup>
               </Col>

@@ -50,72 +50,69 @@ class UserInfo extends React.Component {
         });
     };
  
-render() {
-  
-  return (
-    <div>
-    <div id='profileUpdate' className="container wrapper well"><br />
-    <span id="req" className="wrapper">* required</span>
-      <form onSubmit = {this.handleSubmit}>
-      <Row>
-		<Col md={4}>
-	      <label id='signlable'>*Name
-	        <FormControl type="text" name="name" placeholder="Name" autoFocus required
-	        onChange = {this.onChange} value={this.state.states.name}
-	        />
-	      </label>
-      	</Col>
-      	<Col md={4}>
-        <label id='signlable'>*Phone Number 
-          <FormControl type="number" name="phoneNumber" placeholder="Phone Number" required
-            onChange={this.onChange} value={this.state.states.phoneNumber}/>
-          </label><br />
-	    
-	    </Col>
-		<Col md={4}>
-	       <label id='signlable'>*Email:
-	        <FormControl type="email" name="email" placeholder="Email" required
-	          onChange={this.onChange}  value={this.state.states.email} /> 
-	        </label><br />
-        </Col>
-     </Row><br />
-     <Row>
-      	<Col md={4}>
-	        <label id='signlable'>*Gender
-	        <FormControl type="text" name="gender" placeholder="Gender" required
-	          onChange={this.onChange}  value={this.state.states.gender} />
-	        </label><br />
-        </Col>
-		<Col md={4}>
-    <label id='signlable'>Nationality
-           <FormControl type="text" name="nationality" placeholder="Nationality" 
-            onChange={this.onChange} value={this.state.states.nationality} />
-          </label><br />
-        
-	    </Col>
-      	<Col md={4}>   
-	        <label id='signlable'>Address
-	        <FormControl type="text" name="address" placeholder="Address"
-	          onChange={this.onChange} value={this.state.states.address} />
-	        </label><br />
-	    </Col>
-	  </Row><br />
-	  <Row>
-		<Col md={4}>    
-	        <label id='signlable'>*Age
-	         <FormControl type="number" name="age" placeholder="Age" required
-	          onChange={this.onChange} value={this.state.states.age}/>
-	        </label><br />
-	    </Col><br /><br /><br />
-    <Col md={4}>
-    </Col>
-      	<Col md={4}>   
-	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button> 
-		</Col>
-	  </Row>
-      </form>
-	</div>
-  </div>
+  render() {
+    return (
+      <div>
+        <div id='profileUpdate' className="container wrapper outerBorder"><br />
+          <span id="req" className="wrapper">* required</span>
+          <form onSubmit = {this.handleSubmit}>
+            <Row>
+      		    <Col md={4}>
+        	      <label id='signlable'>*Name
+        	        <FormControl type="text" name="name" placeholder="Name" autoFocus required
+        	        onChange = {this.onChange} value={this.state.states.name}
+        	        />
+        	      </label>
+            	</Col>
+        	    <Col md={4}>
+                <label id='signlable'>*Phone Number 
+                  <FormControl type="number" name="phoneNumber" placeholder="Phone Number" required
+                  onChange={this.onChange} value={this.state.states.phoneNumber}/>
+                </label><br />
+  	          </Col>
+  		        <Col md={4}>
+      	        <label id='signlable'>*Email:
+      	          <FormControl type="email" name="email" placeholder="Email" required
+      	          onChange={this.onChange}  value={this.state.states.email} /> 
+      	        </label><br />
+              </Col>
+            </Row><br />
+            <Row>
+            	<Col md={4}>
+      	        <label id='signlable'>*Gender
+      	          <FormControl type="text" name="gender" placeholder="Gender" required
+      	          onChange={this.onChange}  value={this.state.states.gender} />
+      	        </label><br />
+              </Col>
+      		    <Col md={4}>
+                <label id='signlable'>Nationality
+                  <FormControl type="text" name="nationality" placeholder="Nationality" 
+                  onChange={this.onChange} value={this.state.states.nationality} />
+                </label><br />
+      	      </Col>
+            	<Col md={4}>   
+      	        <label id='signlable'>Address
+      	          <FormControl type="text" name="address" placeholder="Address"
+      	          onChange={this.onChange} value={this.state.states.address} />
+      	        </label><br />
+      	      </Col>
+        	  </Row><br />
+        	  <Row>
+        		  <Col md={4}>    
+      	        <label id='signlable'>*Age
+      	          <FormControl type="number" name="age" placeholder="Age" required
+      	          onChange={this.onChange} value={this.state.states.age}/>
+      	        </label><br />
+        	    </Col><br /><br /><br />
+              <Col md={5}>
+              </Col>
+              <Col md={4}>   
+        	        <Button type = "submit" bsStyle="primary" bsSize="large">Update</Button> 
+        		  </Col>
+        	  </Row>
+          </form>
+  	    </div>
+      </div>
     )
   }
 }

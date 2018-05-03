@@ -30,12 +30,8 @@ message.save(function(error){
 	}else{
 	console.log('saved')
 
-	}
-
-
-	
+	}	
 })
- //console.log('here------------------',data);
 };
 
 

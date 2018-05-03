@@ -1,73 +1,66 @@
 import React from 'react';
-import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import { Button, FormControl, Row, Col, ButtonToolbar, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import $ from 'jquery';
 class JobsForUser extends React.Component {
   constructor(props) {
     super(props);
-    
+    this.deleteJobs = this.deleteJobs.bind(this);
   }
 
+  componentDidMount() {
+  }
 
- 
-render() {
-  
-  return (
-    <div>
-    <div className="jobsDiv"><br />
-    <Link to = {`/UserJobs/${ this.props.item.jobTitle }/${ this.props.item.user }`} activeClassName = "is-active" >
-      <Row id="userjob">
-      <Col md={4}>
-      <span><b>Name : </b></span>
-      <span>{this.props.item.user}</span>
-      </Col>
-      <Col md={4}>
-      <span><b>Job Title : </b></span>
-      <span>{this.props.item.jobTitle}</span>
-      </Col>
-      <Col md={4}>
-      <span><b>Job Category : </b></span>
-      <span>{this.props.item.category}</span>
-      </Col>
-    </Row><br />
-    
-        <Row id="userjob">
-            <Col md={4}>
-            <span><b>From : </b></span>
-      <span>{this.props.item.from}</span>
-      </Col>
-      <Col md={4}>
-      <span><b>To : </b></span>
-      <span>{this.props.item.to}</span>
-      </Col> 
-    </Row><br />
+  deleteJobs(e) {
+    $.ajax({
+      url: `/delete/${this.props.item.jobTitle}`,
+      method: 'DELETE',
+    })
+    .done (function (data) {
+      alert('Job deleted');
+    })
+    .fail(function( jqXHR, textStatus ) {
+      alert("error");
+    });
+  }
 
-    <Row id="userjob">
-    <Col md={1}>
-    </Col>
-      <Col id="description" md={10}>
-      <span><b>Description : </b></span>
-      <span>{this.props.item.jobDescription}</span>
-      </Col>
-      <Col md={1}>
-      </Col>
-    </Row><br />
-
-     <Row>
-     <Col md={8}>
-      </Col>
-     <Col id='postTime' md={4}>
-      <span><b>Posted at : </b></span>
-      <span>{this.props.item.created_at.slice(0, 10)}</span>
-      </Col>
-     </Row>
-    
-    
-    
-    </Link>
-    </div>
-    </div>
-
+  render() {
+    return (
+      <div className='container'>
+        <Panel bsStyle='primary'>
+          <Panel.Heading>
+            <Panel.Title id='pa' toggle>
+              {this.props.item.jobTitle}
+            </Panel.Title>
+          </Panel.Heading>
+          <Panel.Body collapsible>
+            <div className='row'>
+              <div className='col-md-9'>
+                <ListGroupItem header="Category :">{this.props.item.category}</ListGroupItem>
+                <ListGroupItem header="available :">from {this.props.item.from} to {this.props.item.to}</ListGroupItem>
+                <ListGroupItem header="Description :">{this.props.item.jobDescription}</ListGroupItem>
+              </div>
+              <div className='col-md-3'>
+                <ListGroupItem>
+                  <Link to = {`/UserJobs/${ this.props.item.jobTitle }/${ this.props.item.user }`}>
+                    <Button bsStyle="warning" bsSize="large">Edit</Button>
+                  </Link>
+                  </ListGroupItem>
+                <ListGroupItem >
+                  <Button bsStyle="danger"bsSize="large" onClick={this.deleteJobs}>Delete</Button>
+                </ListGroupItem>
+              </div>
+            </div>
+          </Panel.Body>
+          <Panel.Footer>
+            {this.props.item.created_at.slice(0, 10)}
+          </Panel.Footer>
+        </Panel>
+      </div>
     )
   }
 }
 export default JobsForUser;
+/*
+
+*/
