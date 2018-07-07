@@ -10,8 +10,6 @@ class UsersProfile extends React.Component {
       user:[],
       username:''
     }
-    console.log('this state user',this.state.user)
-    console.log('this state props',this.props)
 
   }
 
@@ -20,19 +18,16 @@ class UsersProfile extends React.Component {
   }
 
   getUser() {
-    console.log("hi")
     var that = this;
     var user = this.props.match.params.username
     this.setState({
       username:user
     })
-    console.log(user)
     $.ajax({
       url: `/useri/${user}`,
       method: 'GET',
     })
     .done (function (data) {
-      console.log('data',data)
       that.setState({
         user: data
       });
@@ -43,7 +38,6 @@ class UsersProfile extends React.Component {
   }
 
   render() {
-    console.log('username ====',this.state.username)
     return(
       <div className = 'container'>
         <br />

@@ -48,12 +48,10 @@ app.use(session({
 // 	next();
 // })
 app.post('/messages',function(req,res){
-	console.log('req ----------' ,req.body)
 	Msgs.createmsg(req.body);
 });
 app.get('/messages',function(req,res){
 	Msgs.retriveMsg(function(err,msg){
-		console.log('hello from message')
 		if(err){
 			console.log(err)
 		}else{
@@ -62,7 +60,6 @@ app.get('/messages',function(req,res){
 	});
 });
 app.put('/messages',function(req,res){
-	console.log('index file req =======',req.body)
 	Msgs.updateMsg(req.body.username,function(err,msg){
 		if(err){
 			console.log(err)
