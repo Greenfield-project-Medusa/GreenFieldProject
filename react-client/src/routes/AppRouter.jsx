@@ -23,7 +23,6 @@ constructor(props) {
 axios.get('/logged')
   .then(response => {
     const posts = response.data;
-    // console.log(response);
     this.setState({session:posts});
      
   })

@@ -106,18 +106,7 @@ var deleteUser = function(userName, callback){
 }
 
 var postRating= function(userName, rate, callback){
-  console.log('users')
    Users.findOne({userName:userName}).exec(callback)
-  //   if (err) {
-  //     console.log(err)
-  //   } else if (!user) {
-  //     res.send('No user found')
-  //   } else {
-  //     user.rate.push(rate)
-  //     res.send(user)
-  //   }
-  //   user.save()
-  //})
 }
 module.exports.Users = Users;
 module.exports.createUsers = createUsers;

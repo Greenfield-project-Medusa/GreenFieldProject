@@ -8,6 +8,10 @@
   - __Scrum Master__: Dareen Hanash
   - __Development Team Members__: Hamza Alwan, Livia Nistor
 
+  Legacy Project Team (update the Website with new features and fix bugs): 
+  - __Scrum Master__: Ahmad Yaaqba
+  - __Development Team Members__: Abdallah Alramahi, Monther Amer, Afaaq Smadi
+
 ## Table of Contents
 
 1. [Usage](#Usage)
@@ -51,3 +55,4 @@ View the project roadmap [here](https://waffle.io/RBKJuggernaut/GreenFieldProjec
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
